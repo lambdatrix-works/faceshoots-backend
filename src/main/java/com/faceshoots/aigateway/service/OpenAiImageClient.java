@@ -32,9 +32,6 @@ public class OpenAiImageClient {
 
   @Value("${faceshoots.openai.size:1024x1024}")
   private String size;
-  
-  @Value("${faceshoots.openai.quality:low}")
-  private String quality;
 
   public OpenAiImageClient(RestClient.Builder builder) {
     this.rest = builder.build();
@@ -56,7 +53,6 @@ public class OpenAiImageClient {
     body.add("prompt", prompt);
     body.add("n", String.valueOf(n));
     body.add("size", size);
-    body.add("quality", quality);
 
     MultipartByteArrayResource fileResource = new MultipartByteArrayResource(
         imageBytes,
